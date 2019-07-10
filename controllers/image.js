@@ -1,4 +1,4 @@
-const Clarifai = require('clarifai')
+const Clarifai = require('clarifai');
 
 /* ADD YOUR OWN API KEY */
 const app = new Clarifai.App({
@@ -21,9 +21,9 @@ const handleImage = (req, res, db) => {
     .increment('entries', 1)
     .returning('entries')
     .then(entries => {
-    	res.json(entries);
+    	res.json(entries[0]);
   })
-    .catch(err => res.status(404).json('unable to get entries'))
+    .catch(err => res.status(400).json('unable to get entries'))
 }
 
 module.exports = {
